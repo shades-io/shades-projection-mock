@@ -1,0 +1,19 @@
+{
+  "name": "shades-projection-mock",
+  "version": "0.1.0",
+  "description": "Shades mock projection module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shades-io/shades-projection-mock.git"
+  },
+  "author": "shades@netflix.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shades-io/shades-projection-mock/issues"
+  },
+  "homepage": "https://github.com/shades-io/shades-projection-mock#readme"
+}
