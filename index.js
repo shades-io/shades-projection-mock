@@ -107,8 +107,9 @@ class MockProjection {
     }
 }
 
-const create = options => {
-    return new MockProjection(options);
+const create = moduleOptions => {
+    return instanceOptions =>
+        new MockProjection(Object.assign({}, moduleOptions, instanceOptions));
 };
 
 module.exports = create;
