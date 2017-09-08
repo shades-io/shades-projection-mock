@@ -1,6 +1,9 @@
 'use strict';
 
-const deserialize = serialized => JSON.parse(serialized);
+const deserialize = serialized =>
+    typeof serialized === 'object'
+        ? serialized
+        : JSON.parse(serialized);
 
 class MockProjection {
 
@@ -62,26 +65,22 @@ class MockProjection {
 
     get entities() {
         return {
-            create: _upsertEntity,
-            update: _upsertEntity,
-            delete: _deleteEntity,
-            get: _getEntity,
-            exists: _existsEntity,
+            create: this._upsertEntity.bind(this),
+            update: this._upsertEntity.bind(this),
+            delete: this._deleteEntity.bind(this),
+            get: this._getEntity.bind(this),
+            exists: this._existsEntity.bind(this),
         };
     }
 
     get relationships() {
         return {
-            create: _upsertRelationship,
-            update: _upsertRelationship,
-            delete: _deleteRelationship,
-            get: _getRelationship,
-            exists: _existsRelationship,
+            create: _upsertRelationship.bind(this),
+            update: _upsertRelationship.bind(this),
+            delete: _deleteRelationship.bind(this),
+            get: _getRelationship.bind(this),
+            exists: _existsRelationship.bind(this),
         };
-    }
-
-    get state() {
-        return this.state;
     }
 
     serialize() {
@@ -104,6 +103,7 @@ class MockProjection {
                 }
             });
         }
+        return Promise.resolve();
     }
 }
 
